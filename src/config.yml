@@ -1,0 +1,10 @@
+# CanvasKits Created by Jcdesimp
+# ######## DEFAULT CONFIG ########
+# General options
+# options:
+#    #test option true or false.
+#    testOption: true
+# #### CONFIGURE OPTIONS BELOW ####
+
+options:
+  testOption: true

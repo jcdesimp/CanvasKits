@@ -4,3 +4,13 @@ version: 0.1
 author: Jcdesimp
 authors: []
 website:
+
+softdepend: [Vault]
+
+commands:
+   canvaskits:
+      aliases: [kits, kit]
+      description: The base Landlord command.
+      usage: /<command> [command]
+      permission: landlord.use
+      permission-message: You don't have permission.

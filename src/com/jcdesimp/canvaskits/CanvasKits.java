@@ -56,8 +56,6 @@ public class CanvasKits extends JavaPlugin {
         ////////////////////////////////
 
 
-        getServer().getPluginManager().registerEvents(new DoubleJump(this), this);
-
         // Database creation, configuration, and maintenance.
         setupDatabase();
         //getLogger().info(getDescription().getName() + ": Created by Jcdesimp");

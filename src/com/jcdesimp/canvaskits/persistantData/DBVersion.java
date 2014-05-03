@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @SuppressWarnings("UnusedDeclaration")
 @Entity
-@Table(name="ll_version")
+@Table(name="ck_version")
 public class DBVersion {
 
 

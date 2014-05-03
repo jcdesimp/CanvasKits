@@ -23,7 +23,7 @@ public interface Kit {
      * @param p
      * @return
      */
-    public Date getCooldown(Player p);
+    public long getCooldown(Player p);
 
     /**
      * gets display name of kit (for UI)

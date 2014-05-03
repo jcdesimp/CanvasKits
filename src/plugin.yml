@@ -9,7 +9,7 @@ softdepend: [Vault]
 
 commands:
    canvaskits:
-      aliases: [kits, kit]
+      aliases: [kits, kit, ck]
       description: The base Landlord command.
       usage: /<command> [command]
       permission: landlord.use

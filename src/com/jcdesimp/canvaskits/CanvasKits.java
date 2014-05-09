@@ -37,7 +37,6 @@ public class CanvasKits extends JavaPlugin {
         Map<String,Object> oldConfig = getConfig().getValues(true);
         //Generates new config file if not present
         saveDefaultConfig();
-        //String header = getConfig().options().header();
         FileConfiguration config = getConfig();
 
 

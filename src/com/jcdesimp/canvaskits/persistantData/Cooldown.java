@@ -18,6 +18,9 @@ public class Cooldown {
     @Id
     private int id;
 
+
+    private String pUUID ;
+
     private long endTime;
 
     public int getId() {
@@ -27,6 +30,15 @@ public class Cooldown {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getpUUID() {
+        return pUUID;
+    }
+
+    public void setpUUID(String pUUID) {
+        this.pUUID = pUUID;
+    }
+
 
     public long getEndTime() {
         return endTime;

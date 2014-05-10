@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
  */
 public class ConcreteKit implements Kit {
 
+
+
     /**
      * Give the kit to the player
      * @param p

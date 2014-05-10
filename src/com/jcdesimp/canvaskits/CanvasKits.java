@@ -1,6 +1,8 @@
 package com.jcdesimp.canvaskits;
 
 import com.avaje.ebean.EbeanServer;
+import com.jcdesimp.canvaskits.interfaceview.ViewManager;
+import com.jcdesimp.canvaskits.kitstruct.KitManager;
 import com.jcdesimp.canvaskits.persistantData.DBVersion;
 import com.jcdesimp.canvaskits.persistantData.MyDatabase;
 import org.bukkit.Bukkit;
@@ -21,6 +23,8 @@ public class CanvasKits extends JavaPlugin {
 
     private CanvasKits plugin;
     private MyDatabase database;
+    private KitManager kitMan;
+    private ViewManager viewMan;
 
     @Override
     public void onEnable() {

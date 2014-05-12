@@ -1,12 +1,11 @@
 package com.jcdesimp.canvaskits;
 
 import com.avaje.ebean.EbeanServer;
+import com.jcdesimp.canvaskits.configuration.ConfigManager;
 import com.jcdesimp.canvaskits.interfaceview.ViewManager;
 import com.jcdesimp.canvaskits.kitstruct.KitManager;
 import com.jcdesimp.canvaskits.persistantData.DBVersion;
 import com.jcdesimp.canvaskits.persistantData.MyDatabase;
-import org.bukkit.Bukkit;
-import org.bukkit.Server;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,14 +20,15 @@ import java.util.Map;
  */
 public class CanvasKits extends JavaPlugin {
 
-    private CanvasKits plugin;
+    //private CanvasKits plugin;
     private MyDatabase database;
     private KitManager kitMan;
     private ViewManager viewMan;
+    private ConfigManager configMan;
 
     @Override
     public void onEnable() {
-        plugin = this;
+        //plugin = this;
 
 
 

@@ -1,5 +1,6 @@
 package com.jcdesimp.canvaskits.interfaceview;
 
+import com.jcdesimp.canvaskits.CanvasKits;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
@@ -10,35 +11,31 @@ import java.util.HashMap;
  */
 public class ViewManager implements Listener {
     HashMap<String, KitView> activeViews;
+    CanvasKits plugin;
 
-    public ViewManager() {
+    public ViewManager(CanvasKits plugin) {
+
         this.activeViews = new HashMap<String, KitView>();
+        this.plugin = plugin;
     }
 
-    public void activateView(Player p){
-        KitView newView = new KitView(p);
-        newView.showUI();
-        activeViews.put(p.getName(),newView) ;
+
+    public void addView(Player p) {
+
     }
 
-    public void deactivateView(Player p){
-        if(activeViews.containsKey(p.getName())){
-            activeViews.get(p.getName()).closeView();
-            activeViews.remove(p.getName());
-        }
+    public void clearView(Player p) {
+
     }
 
-    public void deactivateView(String pName){
-        if(activeViews.containsKey(pName)){
-            activeViews.get(pName).closeView();
-            activeViews.remove(pName);
-        }
+    public void clearAll(){
+
     }
 
-    public void deactivateAll(){
-        for(String s : activeViews.keySet()) {
-            deactivateView(s);
-        }
+    private KitView buildUI(){
+        return null;
     }
+
+
 
 }

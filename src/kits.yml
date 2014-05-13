@@ -7,5 +7,34 @@
 # #### CONFIGURE KITS BELOW ####
 
 kits:
-  kit1: true
-  kit2: false
+    cat1:
+        name: 'Test Category'
+        item:
+            type: dirt
+        description:
+            - 'A testing category'
+            - 'for testing.'
+        kits:
+            kit1:
+                name: 'Test Kit'
+                item:
+                    type: stone
+                description:
+                    - 'A testing kit'
+                    - 'for testing.'
+                actions:
+                    give-diamond:
+                        type: ITEMS
+                        item:
+                            type: diamond
+                            amount: 3
+                    give-emerald:
+                        type: ITEMS
+                        item: emerald
+                        amount: 1
+                cooldown: 1200
+
+
+
+
+

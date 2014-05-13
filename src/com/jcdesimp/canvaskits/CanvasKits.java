@@ -39,7 +39,8 @@ public class CanvasKits extends JavaPlugin {
         //// CONFIG FILE MANAGEMENT ///
 
 
-        this.configMan = new ConfigManager();
+        this.configMan = new ConfigManager(this);
+        configMan.addConfig("config.yml");
 
 
 

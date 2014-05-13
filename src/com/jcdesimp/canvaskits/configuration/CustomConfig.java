@@ -54,7 +54,7 @@ public class CustomConfig {
      * Get the configuration object
      * @return conciguration
      */
-    public FileConfiguration getCustomConfig() {
+    public FileConfiguration getConfig() {
         if (customConfig == null) {
             reloadConfig();
         }
@@ -69,7 +69,7 @@ public class CustomConfig {
             return;
         }
         try {
-            getCustomConfig().save(customConfigFile);
+            getConfig().save(customConfigFile);
         } catch (IOException ex) {
             plugin.getLogger().log(Level.SEVERE, "Could not save config to " + customConfigFile, ex);
         }

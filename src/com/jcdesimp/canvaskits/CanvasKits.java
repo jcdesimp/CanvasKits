@@ -38,6 +38,13 @@ public class CanvasKits extends JavaPlugin {
 
         //// CONFIG FILE MANAGEMENT ///
 
+
+        this.configMan = new ConfigManager();
+
+
+
+
+        /*
         Map<String,Object> oldConfig = getConfig().getValues(true);
         //Generates new config file if not present
         saveDefaultConfig();
@@ -55,7 +62,7 @@ public class CanvasKits extends JavaPlugin {
         }
 
         saveConfig();
-
+         */
         ////////////////////////////////
 
 

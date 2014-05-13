@@ -1,0 +1,11 @@
+# CanvasKits Created by Jcdesimp
+# ######## KITS CONFIG ########
+# General options
+# kits:
+#    #test option true or false.
+#    kit1: true
+# #### CONFIGURE KITS BELOW ####
+
+kits:
+  kit1: true
+  kit2: false

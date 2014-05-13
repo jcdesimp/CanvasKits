@@ -41,29 +41,8 @@ public class CanvasKits extends JavaPlugin {
 
         this.configMan = new ConfigManager(this);
         configMan.addConfig("config.yml");
+        configMan.addConfig("kits.yml");
 
-
-
-
-        /*
-        Map<String,Object> oldConfig = getConfig().getValues(true);
-        //Generates new config file if not present
-        saveDefaultConfig();
-        FileConfiguration config = getConfig();
-
-
-        // checks for missing entries and applies new ones
-        for (Map.Entry<String, Object> entry : config.getDefaults().getValues(true).entrySet()) {
-            if(oldConfig.containsKey(entry.getKey())) {
-                config.set(entry.getKey(),oldConfig.get(entry.getKey()));
-            } else {
-                config.set(entry.getKey(), entry.getValue());
-            }
-
-        }
-
-        saveConfig();
-         */
         ////////////////////////////////
 
 

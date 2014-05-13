@@ -30,7 +30,7 @@ public class ConfigManager {
         CustomConfig newconf = new CustomConfig(plugin, filename);
         configs.put(filename, newconf);
 
-        Map<String,Object> oldConfig = newconf.getConfig().getValues(true);
+        /*Map<String,Object> oldConfig = newconf.getConfig().getValues(true);
         //Generates new config file if not present
         newconf.saveDefaultConfig();
         FileConfiguration config = newconf.getConfig();
@@ -46,7 +46,7 @@ public class ConfigManager {
 
         }
 
-        newconf.saveConfig();
+        newconf.saveConfig();*/
     }
 
 }

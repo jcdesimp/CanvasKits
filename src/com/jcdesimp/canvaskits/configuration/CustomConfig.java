@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.logging.Level;
 
 /**
@@ -29,6 +30,24 @@ public class CustomConfig {
     public CustomConfig(JavaPlugin plugin, String filename){
 
         this.filename = filename;
+        this.plugin = plugin;
+        Map<String,Object> oldConfig = getConfig().getValues(true);
+        //Generates new config file if not present
+        saveDefaultConfig();
+        FileConfiguration config = getConfig();
+
+
+        // checks for missing entries and applies new ones
+        for (Map.Entry<String, Object> entry : config.getDefaults().getValues(true).entrySet()) {
+            if(oldConfig.containsKey(entry.getKey())) {
+                config.set(entry.getKey(),oldConfig.get(entry.getKey()));
+            } else {
+                config.set(entry.getKey(), entry.getValue());
+            }
+
+        }
+
+        saveConfig();
 
 
     }
@@ -38,12 +57,12 @@ public class CustomConfig {
      */
     public void reloadConfig() {
         if (customConfigFile == null) {
-            customConfigFile = new File(plugin.getDataFolder(), "customConfig.yml");
+            customConfigFile = new File(plugin.getDataFolder(), filename);
         }
         customConfig = YamlConfiguration.loadConfiguration(customConfigFile);
 
         // Look for defaults in the jar
-        InputStream defConfigStream = plugin.getResource("customConfig.yml");
+        InputStream defConfigStream = plugin.getResource(filename);
         if (defConfigStream != null) {
             YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
             customConfig.setDefaults(defConfig);
@@ -80,10 +99,10 @@ public class CustomConfig {
      */
     public void saveDefaultConfig() {
         if (customConfigFile == null) {
-            customConfigFile = new File(plugin.getDataFolder(), "customConfig.yml");
+            customConfigFile = new File(plugin.getDataFolder(), filename);
         }
         if (!customConfigFile.exists()) {
-            plugin.saveResource("customConfig.yml", false);
+            plugin.saveResource(filename, false);
         }
     }
 

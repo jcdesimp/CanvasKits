@@ -23,7 +23,10 @@ public class ItemsAction implements KitAction {
     @Override
     public void call(Player player) {
         HashMap<Integer,ItemStack>  left = player.getInventory().addItem(item);
-        player.getWorld().dropItem(player.getLocation(), item);
+        if(!left.isEmpty()) {
+            player.getWorld().dropItem(player.getLocation(), item);
+        }
+
 
 
     }

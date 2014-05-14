@@ -39,11 +39,14 @@ public class CanvasKits extends JavaPlugin {
         //// CONFIG FILE MANAGEMENT ///
 
 
-        this.configMan = new ConfigManager(this);
+        configMan = new ConfigManager(this);
         configMan.addConfig("config.yml");
         configMan.addConfig("kits.yml");
 
         ////////////////////////////////
+
+        kitMan = new KitManager(this);
+
 
 
         // Database creation, configuration, and maintenance.
@@ -125,4 +128,8 @@ public class CanvasKits extends JavaPlugin {
         }
     }
 
+
+    public ConfigManager getConfigManager() {
+        return configMan;
+    }
 }

@@ -3,6 +3,7 @@ package com.jcdesimp.canvaskits.kitstruct;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,7 +22,7 @@ public interface Kit {
      * Gets description lines (Item lore)
      * @return description
      */
-    public String[] getDescription();
+    public ArrayList<String> getDescription();
 
     /**
      * get the item stack that visually represents

@@ -8,31 +8,48 @@
 
 kits:
     cat1:
-        name: 'Test Category'
+        name: Test Category
         item:
-            type: dirt
+            material: dirt
         description:
-            - 'A testing category'
-            - 'for testing.'
+            - A testing category
+            - for testing.
         kits:
             kit1:
-                name: 'Test Kit'
+                name: Test Kit
                 item:
-                    type: stone
+                    material: stone
+                    damage: 0
+                    enchantments:
+                        - DURABILITY:1
                 description:
-                    - 'A testing kit'
-                    - 'for testing.'
+                    - A testing kit
+                    - for testing.
                 actions:
                     give-diamond:
                         type: ITEMS
                         item:
-                            type: diamond
+                            material: diamond
                             amount: 3
                     give-emerald:
                         type: ITEMS
-                        item: emerald
-                        amount: 1
+                        item:
+                            material: emerald
+
                 cooldown: 1200
+            kit2:
+                name: Test Kit 2
+                description:
+                    - Another test kit
+                    - for da testing
+                actions:
+                    make-invis:
+                        type: EFFECT
+                        effect:
+                            type: speed
+                            duration: 300
+                            level: 1
+                            ambient: false
 
 
 

@@ -18,7 +18,7 @@ public class ItemsAction implements KitAction {
 
     /**
      * Give item to a player
-     * @param player
+     * @param player to give the items to.
      */
     @Override
     public void call(Player player) {

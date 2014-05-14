@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * File created by jcdesimp on 5/9/14.
@@ -12,13 +13,13 @@ public class KitCategory implements Kit {
 
 
     String displayName;
-    String[] description;
+    ArrayList<String> description;
     ItemStack displayItem;
     ArrayList<Kit> kits;
 
-    public KitCategory( String displayName, String[] description, ItemStack displayItem) {
+    public KitCategory( String displayName, List<String> desc, ItemStack displayItem) {
         this.displayItem = displayItem;
-        this.description = description;
+        this.description = new ArrayList<String>(desc);
         this.displayName = displayName;
         this.kits = new ArrayList<Kit>();
     }
@@ -37,7 +38,7 @@ public class KitCategory implements Kit {
     }
 
     @Override
-    public String[] getDescription() {
+    public ArrayList<String> getDescription() {
         return description;
     }
 

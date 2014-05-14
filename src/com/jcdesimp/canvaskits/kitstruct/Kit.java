@@ -1,6 +1,7 @@
 package com.jcdesimp.canvaskits.kitstruct;
 
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Date;
 
@@ -10,20 +11,24 @@ import java.util.Date;
 public interface Kit {
 
 
-
-
-
     /**
      * gets display name of kit (for UI)
-     * @return
+     * @return display name
      */
     public String getDisplayName();
 
     /**
      * Gets description lines (Item lore)
-     * @return
+     * @return description
      */
     public String[] getDescription();
+
+    /**
+     * get the item stack that visually represents
+     * this kit
+     * @return the item stack
+     */
+    public ItemStack getDisplayItem();
 
 
 

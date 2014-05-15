@@ -38,13 +38,6 @@ public class KitManager {
         parseKits();
     }
 
-    /**
-     * adds a kit to the kitlist
-     * @param k
-     */
-    private void addKit(Kit k) {
-        headKits.add(k);
-    }
 
     /**
      * getter for the head kits
@@ -136,6 +129,11 @@ public class KitManager {
 
     }
 
+    /**
+     * Parses data for a kit action
+     * @param cfg section to parse
+     * @return KitAction
+     */
     private KitAction parseAction(ConfigurationSection cfg) {
         Map<String,Object> vals = cfg.getValues(true);
         KitAction action;
@@ -174,6 +172,12 @@ public class KitManager {
         return null;
     }
 
+
+    /**
+     * Parses thru to get a potion effect
+     * @param cfg to parse thru
+     * @return the potion effect
+     */
     private PotionEffect parsePotion(ConfigurationSection cfg) {
 
         //set type
@@ -192,7 +196,12 @@ public class KitManager {
         return new PotionEffect(pType, duration, level, ambient);
     }
 
-
+    /**
+     * parse through dat to create a new item
+     * with enchantments, quantity, and damage value
+     * @param cfg to parse through
+     * @return the new ItemStack
+     */
     private ItemStack parseItem( ConfigurationSection cfg ) {
         Map<String, Object> vals = cfg.getValues(true);
         ItemStack newItem;

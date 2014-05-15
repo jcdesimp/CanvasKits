@@ -132,4 +132,8 @@ public class CanvasKits extends JavaPlugin {
     public ConfigManager getConfigManager() {
         return configMan;
     }
+
+    public KitManager getKitMan() {
+        return kitMan;
+    }
 }

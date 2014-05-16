@@ -53,7 +53,7 @@ public class KitManager {
     private void parseKits() {
         ConfigurationSection headSec = plugin.getConfigManager().getConfig("kits.yml").getConfig().getConfigurationSection("kits");
         for(String s : headSec.getKeys(false)) {
-            Kit newKit = parseKit(headSec.getConfigurationSection(s));
+            Kit newKit = parseKit(headSec.getConfigurationSection(s), s);
             if(newKit != null){
                 headKits.add(newKit);
             }
@@ -67,7 +67,7 @@ public class KitManager {
      * @param cfg configurationSection mapping representing a kit
      * @return the newly created kit
      */
-    private Kit parseKit( ConfigurationSection cfg ) {
+    private Kit parseKit( ConfigurationSection cfg, String uName ) {
         //System.out.println( cfg.toString() );
         Map<String, Object> vals = cfg.getValues(true);
         String displayName;
@@ -98,9 +98,9 @@ public class KitManager {
 
         //is categrory
         if(vals.containsKey("kits")) {
-            KitCategory k = new KitCategory(displayName, desc, displayItem);
+            KitCategory k = new KitCategory(displayName, desc, displayItem, uName);
             for(String s : cfg.getConfigurationSection("kits").getKeys(false)) {
-                k.addKit(parseKit(cfg.getConfigurationSection("kits." + s)));
+                k.addKit(parseKit(cfg.getConfigurationSection("kits." + s), uName+"."+s));
             }
 
 
@@ -108,7 +108,7 @@ public class KitManager {
             return k;
         } else {  //is concrete kit
 
-            ConcreteKit k = new ConcreteKit(displayName, desc, displayItem);
+            ConcreteKit k = new ConcreteKit(displayName, desc, displayItem, uName);
             if(vals.containsKey("actions")) {
                 for(String s : cfg.getConfigurationSection("actions").getKeys(false)) {
                     k.addKitAction(parseAction(cfg.getConfigurationSection("actions." + s)));

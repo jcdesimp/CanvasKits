@@ -16,10 +16,12 @@ public class ConcreteKit implements Kit {
     ArrayList<String> description;
     ItemStack displayItem;
     ArrayList<KitAction> kitActions;
+    String uniqueName;
     int cooldown = 0;
 
-    public ConcreteKit(String displayName, List<String> desc, ItemStack displayItem) {
+    public ConcreteKit(String displayName, List<String> desc, ItemStack displayItem, String uName) {
         this.displayName = displayName;
+        this.uniqueName = uName;
         this.description = new ArrayList<String>();
         for(String s : desc) {
             description.add(ChatColor.RESET+s);
@@ -81,5 +83,10 @@ public class ConcreteKit implements Kit {
     @Override
     public ItemStack getDisplayItem() {
         return displayItem;
+    }
+
+    @Override
+    public String getUniqueName() {
+        return uniqueName;
     }
 }

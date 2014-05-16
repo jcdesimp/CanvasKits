@@ -31,6 +31,8 @@ public interface Kit {
      */
     public ItemStack getDisplayItem();
 
+    public String getUniqueName();
+
 
 
 

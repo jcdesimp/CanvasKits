@@ -17,9 +17,11 @@ public class KitCategory implements Kit {
     ArrayList<String> description;
     ItemStack displayItem;
     ArrayList<Kit> kits;
+    String uniqueName;
 
-    public KitCategory( String displayName, List<String> desc, ItemStack displayItem) {
+    public KitCategory( String displayName, List<String> desc, ItemStack displayItem, String uName) {
         this.displayItem = displayItem;
+        this.uniqueName=uName;
         this.description = new ArrayList<String>();
         for(String s : desc) {
             description.add(ChatColor.RESET+s);
@@ -50,5 +52,10 @@ public class KitCategory implements Kit {
     @Override
     public ItemStack getDisplayItem() {
         return displayItem;
+    }
+
+    @Override
+    public String getUniqueName() {
+        return uniqueName;
     }
 }

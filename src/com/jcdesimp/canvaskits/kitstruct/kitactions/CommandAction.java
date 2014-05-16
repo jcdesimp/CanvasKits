@@ -19,11 +19,14 @@ public class CommandAction implements KitAction {
 
     @Override
     public void call(Player player) {
-        command = command.replaceAll("@p",player.getName());
+        //System.out.println(command);
+        //String cmd = command;
+        String cmd = command.replaceAll("@p",player.getName());
+        //System.out.println(cmd);
         if (commandType.equalsIgnoreCase("Player")){      //Player command
             player.performCommand(command);
         } else {   //Console command
-            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),command);
+            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),cmd);
         }
     }
 }

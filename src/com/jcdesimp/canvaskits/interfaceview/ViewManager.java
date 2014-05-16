@@ -3,7 +3,9 @@ package com.jcdesimp.canvaskits.interfaceview;
 import com.jcdesimp.canvaskits.CanvasKits;
 import com.jcdesimp.canvaskits.kitstruct.Kit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +25,7 @@ public class ViewManager implements Listener {
 
 
     public void addView(Player p) {
-
+        activeViews.put(p.getName(), new KitView(p, this, plugin.getKitMan().getHeadKits()));
     }
 
     public void clearView(Player p) {
@@ -32,6 +34,19 @@ public class ViewManager implements Listener {
 
     public void clearAll(){
 
+    }
+
+    public void changeView(Player p, KitView v) {
+         activeViews.put(p.getName(), v);
+    }
+
+    @EventHandler
+    public void clickInvSlot( InventoryClickEvent event ) {
+        if (!event.getInventory().getTitle().equals("CANVAS Kits")){
+            return;
+        }
+        event.setCancelled(true);
+        activeViews.get(event.getWhoClicked().getName()).slotClicked(event.getRawSlot());
     }
 
 

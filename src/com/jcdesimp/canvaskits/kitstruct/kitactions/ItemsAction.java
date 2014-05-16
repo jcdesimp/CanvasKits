@@ -1,5 +1,6 @@
 package com.jcdesimp.canvaskits.kitstruct.kitactions;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -24,7 +25,9 @@ public class ItemsAction implements KitAction {
     public void call(Player player) {
         HashMap<Integer,ItemStack>  left = player.getInventory().addItem(item);
         if(!left.isEmpty()) {
-            player.getWorld().dropItem(player.getLocation(), item);
+            Location loc = player.getLocation();
+            loc.setY(loc.getBlockY()+2);
+            player.getWorld().dropItem(loc, item);
         }
 
 

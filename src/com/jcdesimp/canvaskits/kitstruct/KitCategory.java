@@ -1,5 +1,6 @@
 package com.jcdesimp.canvaskits.kitstruct;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -19,9 +20,13 @@ public class KitCategory implements Kit {
 
     public KitCategory( String displayName, List<String> desc, ItemStack displayItem) {
         this.displayItem = displayItem;
-        this.description = new ArrayList<String>(desc);
+        this.description = new ArrayList<String>();
+        for(String s : desc) {
+            description.add(ChatColor.RESET+s);
+        }
         this.displayName = displayName;
         this.kits = new ArrayList<Kit>();
+
     }
 
     public void addKit(Kit k) {

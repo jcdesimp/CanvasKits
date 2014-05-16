@@ -1,6 +1,7 @@
 package com.jcdesimp.canvaskits.kitstruct;
 
 import com.jcdesimp.canvaskits.kitstruct.kitactions.KitAction;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -17,9 +18,12 @@ public class ConcreteKit implements Kit {
     ArrayList<KitAction> kitActions;
     int cooldown = 0;
 
-    public ConcreteKit(String displayName, List<String> description, ItemStack displayItem) {
+    public ConcreteKit(String displayName, List<String> desc, ItemStack displayItem) {
         this.displayName = displayName;
-        this.description = new ArrayList<String>(description);
+        this.description = new ArrayList<String>();
+        for(String s : desc) {
+            description.add(ChatColor.RESET+s);
+        }
         this.displayItem = displayItem;
         this.kitActions = new ArrayList<KitAction>();
     }

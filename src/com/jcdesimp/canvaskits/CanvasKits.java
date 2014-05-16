@@ -6,6 +6,7 @@ import com.jcdesimp.canvaskits.interfaceview.ViewManager;
 import com.jcdesimp.canvaskits.kitstruct.KitManager;
 import com.jcdesimp.canvaskits.persistantData.DBVersion;
 import com.jcdesimp.canvaskits.persistantData.MyDatabase;
+import org.bukkit.Server;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -46,6 +47,9 @@ public class CanvasKits extends JavaPlugin {
         ////////////////////////////////
 
         kitMan = new KitManager(this);
+        viewMan = new ViewManager(this);
+
+        getServer().getPluginManager().registerEvents(viewMan, this);
 
 
 
@@ -74,6 +78,9 @@ public class CanvasKits extends JavaPlugin {
 
     }
 
+    public ViewManager getViewManager() {
+        return viewMan;
+    }
 
     /*
      * ***************************

@@ -23,13 +23,14 @@ public class CanvasKitsCommandExecutor implements CommandExecutor {
         } else {
 
         }
-        return false;
+        return showKitsView(sender, label);
+        //return false;
     }
 
 
     private boolean showKitsView(CommandSender sender, String label) {
         if(sender instanceof Player){
-
+            plugin.getViewManager().addView((Player)sender);
         }
         return true;
     }

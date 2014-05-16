@@ -70,7 +70,7 @@ public class KitManager {
     private Kit parseKit( ConfigurationSection cfg ) {
         //System.out.println( cfg.toString() );
         Map<String, Object> vals = cfg.getValues(true);
-        String displayName = "";
+        String displayName;
         ItemStack displayItem;
         List<String> desc = new ArrayList<String>();
 
@@ -161,8 +161,8 @@ public class KitManager {
                 return null;
 
             } else if (actionType.equalsIgnoreCase("COMMAND") || actionType.equalsIgnoreCase("COMMANDS")) {
-                String cType = cfg.getString("type", "console");
-                String cmd = cfg.getString("command","ping");
+                String cType = cfg.getString("command.type", "console");
+                String cmd = cfg.getString("command.command","ping");
 
                 action = new CommandAction(cType, cmd);
                 return action;

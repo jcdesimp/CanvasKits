@@ -85,6 +85,22 @@ public class ConcreteKit implements Kit {
         this.price = price;
     }
 
+    public boolean pHasPerm(Player p) {
+        if(p.hasPermission("canvaskits.kits."+uniqueName) || p.hasPermission("canvaskits.kits.*")){
+            return true;
+        }
+        String permTraverse = uniqueName;
+        while (permTraverse.contains(".")) {
+            permTraverse = permTraverse.substring(0,permTraverse.lastIndexOf('.'));
+            //System.out.println(permTraverse+".*");
+            if(p.hasPermission("canvaskits.kits."+permTraverse+".*")){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     @Override
     public String getDisplayName() {
         return displayName;

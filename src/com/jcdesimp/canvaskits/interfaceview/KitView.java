@@ -80,7 +80,7 @@ public class KitView {
     }
 
     public void slotClicked(int slot) {
-        if(slot>=buttons.size()){
+        if(slot>=buttons.size() || slot < 0){
             return;
         }
         buttons.get(slot).onClick();

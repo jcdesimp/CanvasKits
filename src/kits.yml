@@ -39,6 +39,7 @@ kits:
                 cooldown: 1200
             kit2:
                 name: Test Kit 2
+                price: 200
                 description:
                     - Another test kit
                     - for da testing

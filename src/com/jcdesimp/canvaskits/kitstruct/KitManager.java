@@ -122,6 +122,11 @@ public class KitManager {
                 k.setCooldown(((Integer)vals.get("cooldown")));
             }
 
+            if(vals.containsKey("price")){
+                //System.out.println(vals.get("cooldown"));
+                k.setPrice(cfg.getInt("price"));
+            }
+
 
             return k;
 

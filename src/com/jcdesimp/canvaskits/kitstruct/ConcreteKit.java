@@ -1,7 +1,9 @@
 package com.jcdesimp.canvaskits.kitstruct;
 
+import com.jcdesimp.canvaskits.CanvasKits;
 import com.jcdesimp.canvaskits.kitstruct.kitactions.KitAction;
 import com.jcdesimp.canvaskits.persistantData.Cooldown;
+import com.jcdesimp.canvaskits.pluginHooks.VaultHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -19,6 +21,9 @@ public class ConcreteKit implements Kit {
     ItemStack displayItem;
     ArrayList<KitAction> kitActions;
     String uniqueName;
+
+
+    int price = 0;
 
     //cooldown in seconds
     int cooldown = 0;
@@ -65,9 +70,20 @@ public class ConcreteKit implements Kit {
 
         }
         Cooldown.setPCooldown(this,p);
-        //Bukkit.getServer().getPluginManager().getPlugin("CanvasKits").getDatabase().save(c);
+        if(price > 0) {
+            VaultHandler vh = ((CanvasKits) Bukkit.getServer().getPluginManager().getPlugin("CanvasKits")).getvHandler();
+            vh.chargeCash(p,price);
+            p.sendMessage(ChatColor.YELLOW+"You have been charged "+vh.formatCash(price)+".");
+        }
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     @Override
     public String getDisplayName() {

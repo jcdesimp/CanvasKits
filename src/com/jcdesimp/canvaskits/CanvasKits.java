@@ -7,9 +7,12 @@ import com.jcdesimp.canvaskits.kitstruct.KitManager;
 import com.jcdesimp.canvaskits.persistantData.Cooldown;
 import com.jcdesimp.canvaskits.persistantData.DBVersion;
 import com.jcdesimp.canvaskits.persistantData.MyDatabase;
+import com.jcdesimp.canvaskits.pluginHooks.VaultHandler;
+import net.milkbowl.vault.Vault;
 import org.bukkit.Server;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -27,6 +30,7 @@ public class CanvasKits extends JavaPlugin {
     private KitManager kitMan;
     private ViewManager viewMan;
     private ConfigManager configMan;
+    private VaultHandler vHandler;
 
     @Override
     public void onEnable() {
@@ -49,6 +53,7 @@ public class CanvasKits extends JavaPlugin {
 
         kitMan = new KitManager(this);
         viewMan = new ViewManager(this);
+        vHandler = new VaultHandler(this);
 
         getServer().getPluginManager().registerEvents(viewMan, this);
 
@@ -81,6 +86,29 @@ public class CanvasKits extends JavaPlugin {
 
     public ViewManager getViewManager() {
         return viewMan;
+    }
+
+
+
+    /*
+     * **************
+     *     Vault
+     * **************
+     */
+
+    public boolean hasVault(){
+        Plugin plugin = getServer().getPluginManager().getPlugin("Vault");
+
+        // Vault may not be loaded
+        if (plugin == null || !(plugin instanceof Vault) || !this.getConfig().getBoolean("economy.enable", true)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public VaultHandler getvHandler(){
+        return vHandler;
     }
 
     /*

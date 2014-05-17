@@ -1,9 +1,11 @@
 package com.jcdesimp.canvaskits.interfaceview;
 
+import com.jcdesimp.canvaskits.CanvasKits;
 import com.jcdesimp.canvaskits.kitstruct.ConcreteKit;
 import com.jcdesimp.canvaskits.kitstruct.Kit;
 import com.jcdesimp.canvaskits.kitstruct.KitCategory;
 import com.jcdesimp.canvaskits.persistantData.Cooldown;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.inventory.ItemStack;
@@ -27,11 +29,20 @@ public class ViewButton {
     }
 
     public void onClick() {
+        CanvasKits plugin = (CanvasKits)Bukkit.getPluginManager().getPlugin("CanvasKits");
         kv.getPlayer().playSound(kv.getPlayer().getLocation(), Sound.CLICK, 1L, 1L);
         if(kit instanceof KitCategory) {
             kv.changeView((KitCategory) kit);
         } else if( kit instanceof ConcreteKit) {
             //System.out.println("Is concrete...");
+            kv.closeView();
+            if(plugin.hasVault() &&
+                    plugin.getvHandler().hasEconomy() && ((ConcreteKit) kit).getPrice() > 0) {
+                if(!plugin.getvHandler().canAfford(kv.getPlayer(), ((ConcreteKit) kit).getPrice())){
+                    kv.getPlayer().sendMessage(ChatColor.RED+"That kit costs "+plugin.getvHandler().formatCash(((ConcreteKit) kit).getPrice())+".");
+                    return;
+                }
+            }
             if (((ConcreteKit) kit).getCooldown() > 0) {
                 //System.out.println("cooldown more than 0");
                 long cooldown = ((ConcreteKit) kit).getPCooldown(kv.getPlayer());
@@ -54,20 +65,15 @@ public class ViewButton {
                         message+="" + secondsLeft + " more second(s).";
                     }
                     kv.getPlayer().sendMessage(message);
-                } else {
-                    ((ConcreteKit) kit).activate(kv.getPlayer());
-                    kv.getPlayer().sendMessage(ChatColor.GREEN+"Kit received!");
-
+                    return;
                 }
-            } else {
-                //System.out.println("gonna activate it");
-                ((ConcreteKit) kit).activate(kv.getPlayer());
-                kv.getPlayer().sendMessage(ChatColor.GREEN+"Kit received!");
-
             }
+            //System.out.println("gonna activate it");
+            ((ConcreteKit) kit).activate(kv.getPlayer());
+            kv.getPlayer().sendMessage(ChatColor.GREEN+"Kit received!");
 
 
-            kv.closeView();
+
         }
     }
 

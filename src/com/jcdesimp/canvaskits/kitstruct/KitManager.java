@@ -162,7 +162,7 @@ public class KitManager {
 
             } else if (actionType.equalsIgnoreCase("COMMAND") || actionType.equalsIgnoreCase("COMMANDS")) {
                 String cType = cfg.getString("command.type", "console");
-                String cmd = cfg.getString("command.command","ping");
+                String cmd = cfg.getString("command.command","list");
 
                 action = new CommandAction(cType, cmd);
                 return action;

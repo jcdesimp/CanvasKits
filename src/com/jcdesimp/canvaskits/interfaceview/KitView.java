@@ -71,7 +71,7 @@ public class KitView {
     }
 
     public void closeView() {
-        vm.clearView(player);
+        //vm.clearView(player);
         player.closeInventory();
     }
 

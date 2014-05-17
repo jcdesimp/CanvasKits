@@ -4,6 +4,7 @@ import com.avaje.ebean.EbeanServer;
 import com.jcdesimp.canvaskits.configuration.ConfigManager;
 import com.jcdesimp.canvaskits.interfaceview.ViewManager;
 import com.jcdesimp.canvaskits.kitstruct.KitManager;
+import com.jcdesimp.canvaskits.persistantData.Cooldown;
 import com.jcdesimp.canvaskits.persistantData.DBVersion;
 import com.jcdesimp.canvaskits.persistantData.MyDatabase;
 import org.bukkit.Server;
@@ -96,6 +97,7 @@ public class CanvasKits extends JavaPlugin {
             protected java.util.List<Class<?>> getDatabaseClasses() {
                 List<Class<?>> list = new ArrayList<Class<?>>();
                 list.add(DBVersion.class);
+                list.add(Cooldown.class);
 
                 return list;
             };

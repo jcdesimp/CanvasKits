@@ -1,6 +1,8 @@
 package com.jcdesimp.canvaskits.kitstruct;
 
 import com.jcdesimp.canvaskits.kitstruct.kitactions.KitAction;
+import com.jcdesimp.canvaskits.persistantData.Cooldown;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +19,8 @@ public class ConcreteKit implements Kit {
     ItemStack displayItem;
     ArrayList<KitAction> kitActions;
     String uniqueName;
+
+    //cooldown in seconds
     int cooldown = 0;
 
     public ConcreteKit(String displayName, List<String> desc, ItemStack displayItem, String uName) {
@@ -35,24 +39,17 @@ public class ConcreteKit implements Kit {
         this.cooldown = cooldown;
     }
 
-    /**
-     * check if player
-     * on cooldown
-     * @param p
-     * @return
-     */
-    public boolean onCooldown(Player p) {
-        return true;
-
+    public int getCooldown() {
+        return cooldown*1000;
     }
+
     /**
      * gets cooldown remainder
      * @param p
      * @return
      */
     public long getPCooldown(Player p) {
-
-        return cooldown;
+        return Cooldown.getCooldown(uniqueName,p);
     }
 
     public void addKitAction(KitAction ka) {
@@ -67,6 +64,8 @@ public class ConcreteKit implements Kit {
             k.call(p);
 
         }
+        Cooldown.setPCooldown(this,p);
+        //Bukkit.getServer().getPluginManager().getPlugin("CanvasKits").getDatabase().save(c);
     }
 
 

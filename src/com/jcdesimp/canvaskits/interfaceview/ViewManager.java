@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +29,8 @@ public class ViewManager implements Listener {
         activeViews.put(p.getName(), new KitView(p, this, plugin.getKitMan().getHeadKits()));
     }
 
-    public void clearView(Player p) {
-
+    public void clearView(String p) {
+        activeViews.remove(p);
     }
 
     public void clearAll(){
@@ -47,6 +48,15 @@ public class ViewManager implements Listener {
         }
         event.setCancelled(true);
         activeViews.get(event.getWhoClicked().getName()).slotClicked(event.getRawSlot());
+    }
+
+    @EventHandler
+    public void closeInv(InventoryCloseEvent event) {
+        if(!event.getInventory().getTitle().equals("CANVAS Kits")) {
+            return;
+        }
+        clearView(event.getPlayer().getName());
+
     }
 
 

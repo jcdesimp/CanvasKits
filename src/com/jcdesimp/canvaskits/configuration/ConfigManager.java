@@ -29,7 +29,7 @@ public class ConfigManager {
     public void addConfig(String filename) {
         CustomConfig newconf = new CustomConfig(plugin, filename);
         configs.put(filename, newconf);
-
+        newconf.reloadConfig();
         /*Map<String,Object> oldConfig = newconf.getConfig().getValues(true);
         //Generates new config file if not present
         newconf.saveDefaultConfig();

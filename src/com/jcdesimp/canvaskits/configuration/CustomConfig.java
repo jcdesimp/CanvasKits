@@ -41,13 +41,14 @@ public class CustomConfig {
         for (Map.Entry<String, Object> entry : config.getDefaults().getValues(true).entrySet()) {
             if(oldConfig.containsKey(entry.getKey())) {
                 config.set(entry.getKey(),oldConfig.get(entry.getKey()));
-            } else {
+            } /*else {
                 config.set(entry.getKey(), entry.getValue());
-            }
+            } */
 
         }
 
         saveConfig();
+
 
 
     }

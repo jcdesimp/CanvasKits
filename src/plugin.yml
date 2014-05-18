@@ -1,16 +1,42 @@
 name: CanvasKits
 main: com.jcdesimp.canvaskits.CanvasKits
-version: 0.1
+version: 0.2
 author: Jcdesimp
 authors: []
 website: http://jcdesimp.com
 
+loadbefore: [Essentials, CommandBook]
 softdepend: [Vault]
 
 commands:
    canvaskits:
-      aliases: [kits, kit, ck]
-      description: The base Landlord command.
+      description: The base CanvasKits command.
       usage: /<command> [command]
-      permission: landlord.use
+      permission: canvaskits.use
       permission-message: You don't have permission.
+   kits:
+      aliases: [kit]
+      description: Command to access kits.
+      usage: /<command>
+      permission: canvaskits.use
+      permission-message: You don't have permission.
+
+permissions:
+    canvaskits.use:
+        description: allow access to any canvaskits commands
+        default: true
+
+
+
+    canvaskits.kits.*:
+        description: allow access to all kits
+        default: op
+
+    canvaskits.admin.*:
+        description: allow access to canvaskits admin commands
+        children:
+            canvaskits.admin.reload: true
+
+    canvaskits.admin.reload:
+        description: permissions to reload the plugin with /canvaskits reload
+        default: op

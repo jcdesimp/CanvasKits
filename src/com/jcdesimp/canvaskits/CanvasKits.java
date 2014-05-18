@@ -1,6 +1,8 @@
 package com.jcdesimp.canvaskits;
 
 import com.avaje.ebean.EbeanServer;
+import com.jcdesimp.canvaskits.commands.CanvasKitsCommandExecutor;
+import com.jcdesimp.canvaskits.commands.KitsCommandExecutor;
 import com.jcdesimp.canvaskits.configuration.ConfigManager;
 import com.jcdesimp.canvaskits.interfaceview.ViewManager;
 import com.jcdesimp.canvaskits.kitstruct.KitManager;
@@ -9,16 +11,14 @@ import com.jcdesimp.canvaskits.persistantData.DBVersion;
 import com.jcdesimp.canvaskits.persistantData.MyDatabase;
 import com.jcdesimp.canvaskits.pluginHooks.VaultHandler;
 import net.milkbowl.vault.Vault;
-import org.bukkit.Server;
 import org.bukkit.configuration.Configuration;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * File created by jcdesimp on 4/22/14.
@@ -76,6 +76,7 @@ public class CanvasKits extends JavaPlugin {
 
         // Command Executor
         getCommand("canvaskits").setExecutor(new CanvasKitsCommandExecutor(this));
+        getCommand("kits").setExecutor(new KitsCommandExecutor(this));
 
 
 
@@ -83,6 +84,21 @@ public class CanvasKits extends JavaPlugin {
 
 
     }
+    @Override
+    public void onDisable() {
+        viewMan.clearAll();
+    }
+
+    public void onReload() {
+        viewMan.clearAll();
+        HandlerList.unregisterAll(viewMan);
+        configMan.getConfig("kits.yml").reloadConfig();
+        kitMan = new KitManager(this);
+        viewMan = new ViewManager(this);
+        getServer().getPluginManager().registerEvents(viewMan, this);
+
+    }
+
 
     public ViewManager getViewManager() {
         return viewMan;

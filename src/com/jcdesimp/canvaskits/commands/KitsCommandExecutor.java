@@ -1,32 +1,27 @@
-package com.jcdesimp.canvaskits;
+package com.jcdesimp.canvaskits.commands;
 
-import org.bukkit.ChatColor;
+import com.jcdesimp.canvaskits.CanvasKits;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 /**
- * File created by jcdesimp on 4/23/14.
+ * File created by jcdesimp on 5/17/14.
  */
-public class CanvasKitsCommandExecutor implements CommandExecutor {
-    private CanvasKits plugin; //pointer to main class
-    public CanvasKitsCommandExecutor(CanvasKits plugin) {
+public class KitsCommandExecutor implements CommandExecutor {
+    CanvasKits plugin;
+
+    public KitsCommandExecutor(CanvasKits plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (args.length == 0){
-            showKitsView(sender, label);
-        } else {
-
-        }
         return showKitsView(sender, label);
         //return false;
     }
-
 
     private boolean showKitsView(CommandSender sender, String label) {
         if(sender instanceof Player){
@@ -34,4 +29,5 @@ public class CanvasKitsCommandExecutor implements CommandExecutor {
         }
         return true;
     }
+
 }

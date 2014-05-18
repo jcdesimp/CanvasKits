@@ -58,14 +58,16 @@ public class ViewButton {
                     long hoursLeft = minutesLeft/60;
                     long daysLeft = hoursLeft/24;
 
+                    System.out.println(timeLeft + " " + secondsLeft + " " + minutesLeft + " " + hoursLeft + " " + daysLeft);
+
                     if(daysLeft>0) {
-                        message+="" + daysLeft + " more day(s).";
+                        message+="" + (daysLeft+1) + " more day(s).";
                     } else if(hoursLeft > 0) {
-                        message+="" + hoursLeft + " more hour(s).";
+                        message+="" + (hoursLeft+1) + " more hour(s).";
                     } else if(minutesLeft > 0) {
-                        message+="" + minutesLeft + " more minute(s).";
-                    }  else if(secondsLeft > 0) {
-                        message+="" + secondsLeft + " more second(s).";
+                        message+="" + (minutesLeft+1) + " more minute(s).";
+                    }  else {
+                        message+="" + (secondsLeft+1) + " more second(s).";
                     }
                     kv.getPlayer().sendMessage(message);
                     return;

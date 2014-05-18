@@ -10,6 +10,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * File created by jcdesimp on 5/9/14.
@@ -17,6 +18,7 @@ import java.util.HashMap;
 public class ViewManager implements Listener {
     private HashMap<String, KitView> activeViews;
     private CanvasKits plugin;
+    private boolean clearingAll = false;
 
     public ViewManager(CanvasKits plugin) {
 
@@ -33,8 +35,17 @@ public class ViewManager implements Listener {
         activeViews.remove(p);
     }
 
-    public void clearAll(){
+    public void closeView(String p) {
+        activeViews.get(p).getPlayer().closeInventory();
+        //clearView(p);
+    }
 
+    public void clearAll(){
+        clearingAll = true;
+        for(Map.Entry<String, KitView> k : activeViews.entrySet()) {
+            k.getValue().getPlayer().closeInventory();
+        }
+        activeViews.clear();
     }
 
     public void changeView(Player p, KitView v) {
@@ -52,6 +63,9 @@ public class ViewManager implements Listener {
 
     @EventHandler
     public void closeInv(InventoryCloseEvent event) {
+        if(clearingAll){
+            return;
+        }
         if(!event.getInventory().getTitle().equals("CANVAS Kits")) {
             return;
         }

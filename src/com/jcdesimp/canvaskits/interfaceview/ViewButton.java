@@ -58,7 +58,7 @@ public class ViewButton {
                     long hoursLeft = minutesLeft/60;
                     long daysLeft = hoursLeft/24;
 
-                    System.out.println(timeLeft + " " + secondsLeft + " " + minutesLeft + " " + hoursLeft + " " + daysLeft);
+                   // System.out.println(timeLeft + " " + secondsLeft + " " + minutesLeft + " " + hoursLeft + " " + daysLeft);
 
                     if(daysLeft>0) {
                         message+="" + (daysLeft+1) + " more day(s).";

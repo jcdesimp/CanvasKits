@@ -26,7 +26,7 @@ public class EffectAction implements KitAction {
      */
     @Override
     public void call(Player player) {
-        effect.apply(player);
+        player.addPotionEffect(effect);
     }
 
 
